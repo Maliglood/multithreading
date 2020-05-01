@@ -1,4 +1,5 @@
 HOME COMPUTER
+I. Parallel calculations
 UsualFunc()
 	Time: 23427,4476 ms
 UsualFunc2()
@@ -18,3 +19,12 @@ ParallelFunc() [Parallel class]
 ParallelFunc2() [Parallel.for]	
 	Time: 22948,0147 ms
 	Time: 21250,9985 ms
+	
+	
+II. Find goal and stop other tasks
+1)
+	Time: 5975,9023 ms
+
+2) With Cancel
+	Time: 456,8104 ms
+	Time: 397,4579 ms

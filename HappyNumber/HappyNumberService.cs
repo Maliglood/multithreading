@@ -42,5 +42,26 @@ namespace HappyNumber
 
             return false;
         }
+
+        public int FindInDiapazon(int start, int finish, int goal, int charNum, CancellationTokenSource cancelTokenSource, CancellationToken token)
+        {
+            for (var i = start; i < finish; i++)
+            {
+                if (!token.IsCancellationRequested)
+                {
+                    var isHappy = Calculate(i, charNum);
+                    if (i == goal)
+                    {
+                        //cancelTokenSource.Cancel();
+                        return i;
+                    }
+                } else
+                {
+                    break;
+                }
+            }
+
+            return 0;
+        }
     }
 }

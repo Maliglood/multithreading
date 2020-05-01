@@ -13,7 +13,8 @@ namespace Parallel
             var startTime = DateTime.Now;
             // UsualFunc();
             // UsualFunc2();
-            ParallelFunc();
+            // ParallelFunc();
+            ParallelFindFunc();
             var finishTime = DateTime.Now;
             var time = (finishTime - startTime).TotalMilliseconds;
             Console.WriteLine("Time: " + time.ToString() + " ms");
@@ -104,6 +105,100 @@ namespace Parallel
                 happyNumbersNum = happyNumbersNum + task.Result;
 
             Console.WriteLine("Total: " + happyNumbersNum.ToString());
+        }
+
+        static void ParallelFindFunc()
+        {
+            var happyNumberService = new HappyNumberService();
+            var charNum = 8;
+            const int goal = 30810401;
+
+            CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
+            CancellationToken token = cancelTokenSource.Token;
+
+            var task1 = new Task<int>(() => {
+                var num = happyNumberService.FindInDiapazon(10000001, 20000000, goal, charNum,cancelTokenSource, token);
+                return num;
+            });
+
+            Task[] tasks = new Task[10]
+            {
+                new Task(() => {
+                    var res = happyNumberService.FindInDiapazon(1, 10000000, goal, charNum,cancelTokenSource, token);
+                    if (res > 0)
+                    {
+                        Console.WriteLine("Found number: " + res.ToString());
+                    }
+                }),
+                new Task(() => {
+                    var res = happyNumberService.FindInDiapazon(10000001, 20000000, goal, charNum,cancelTokenSource, token);
+                    if (res > 0)
+                    {
+                        Console.WriteLine("Found number: " + res.ToString());
+                    }
+                }),
+                new Task(() => {
+                    var res = happyNumberService.FindInDiapazon(20000001, 30000000, goal, charNum,cancelTokenSource, token);
+                    if (res > 0)
+                    {
+                        Console.WriteLine("Found number: " + res.ToString());
+                    }
+                }),
+                new Task(() => {
+                    var res = happyNumberService.FindInDiapazon(30000001, 40000000, goal, charNum,cancelTokenSource, token);
+                    if (res > 0)
+                    {
+                        Console.WriteLine("Found number: " + res.ToString());
+                    }
+                }),
+                new Task(() => {
+                    var res = happyNumberService.FindInDiapazon(40000001, 50000000, goal, charNum,cancelTokenSource, token);
+                    if (res > 0)
+                    {
+                        Console.WriteLine("Found number: " + res.ToString());
+                    }
+                }),
+                new Task(() => {
+                    var res = happyNumberService.FindInDiapazon(50000001, 60000000, goal, charNum,cancelTokenSource, token);
+                    if (res > 0)
+                    {
+                        Console.WriteLine("Found number: " + res.ToString());
+                    }
+                }),
+                new Task(() => {
+                    var res = happyNumberService.FindInDiapazon(60000001, 70000000, goal, charNum,cancelTokenSource, token);
+                    if (res > 0)
+                    {
+                        Console.WriteLine("Found number: " + res.ToString());
+                    }
+                }),
+                new Task(() => {
+                    var res = happyNumberService.FindInDiapazon(70000001, 80000000, goal, charNum,cancelTokenSource, token);
+                    if (res > 0)
+                    {
+                        Console.WriteLine("Found number: " + res.ToString());
+                    }
+                }),
+                new Task(() => {
+                    var res = happyNumberService.FindInDiapazon(80000001, 90000000, goal, charNum,cancelTokenSource, token);
+                    if (res > 0)
+                    {
+                        Console.WriteLine("Found number: " + res.ToString());
+                    }
+                }),
+                new Task(() => {
+                    var res = happyNumberService.FindInDiapazon(90000001, 100000000, goal, charNum,cancelTokenSource, token);
+                    if (res > 0)
+                    {
+                        Console.WriteLine("Found number: " + res.ToString());
+                    }
+                })
+            };
+
+            foreach (var task in tasks)
+                task.Start();
+
+            Task.WaitAll(tasks);
         }
     }
 }
