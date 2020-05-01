@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Parallel
@@ -46,87 +47,59 @@ namespace Parallel
         {
             var happyNumberService = new HappyNumberService();
             var charNum = 8;
-            var happyNumbersNum = 0;
-            object happyNumbersNum2 = 0;
 
-            Task[] tasks = new Task[10]
+            Task<int>[] tasks = new Task<int>[10]
             {
-                new Task(() => {
+                new Task<int>(() => {
                     var num = happyNumberService.CheckDiapazon(1, 10000000, charNum);
-                    lock (happyNumbersNum2)
-                    {
-                        happyNumbersNum = happyNumbersNum + num;
-                    }
+                    return num;
                 }),
-                new Task(() => {
+                new Task<int>(() => {
                     var num = happyNumberService.CheckDiapazon(10000001, 20000000, charNum);
-                    lock (happyNumbersNum2)
-                    {
-                        happyNumbersNum = happyNumbersNum + num;
-                    }
+                    return num;
                 }),
-                new Task(() => {
+                new Task<int>(() => {
                     var num = happyNumberService.CheckDiapazon(20000001, 30000000, charNum);
-                    lock (happyNumbersNum2)
-                    {
-                        happyNumbersNum = happyNumbersNum + num;
-                    }
+                    return num;
                 }),
-                new Task(() => {
+                new Task<int>(() => {
                     var num = happyNumberService.CheckDiapazon(30000001, 40000000, charNum);
-                    lock (happyNumbersNum2)
-                    {
-                        happyNumbersNum = happyNumbersNum + num;
-                    }
+                    return num;
                 }),
-                new Task(() => {
+                new Task<int>(() => {
                     var num = happyNumberService.CheckDiapazon(40000001, 50000000, charNum);
-                    lock (happyNumbersNum2)
-                    {
-                        happyNumbersNum = happyNumbersNum + num;
-                    }
+                    return num;
                 }),
-                new Task(() => {
+                new Task<int>(() => {
                     var num = happyNumberService.CheckDiapazon(50000001, 60000000, charNum);
-                    lock (happyNumbersNum2)
-                    {
-                        happyNumbersNum = happyNumbersNum + num;
-                    }
+                    return num;
                 }),
-                new Task(() => {
+                new Task<int>(() => {
                     var num = happyNumberService.CheckDiapazon(60000001, 70000000, charNum);
-                    lock (happyNumbersNum2)
-                    {
-                        happyNumbersNum = happyNumbersNum + num;
-                    }
+                    return num;
                 }),
-                new Task(() => {
+                new Task<int>(() => {
                     var num = happyNumberService.CheckDiapazon(70000001, 80000000, charNum);
-                    lock (happyNumbersNum2)
-                    {
-                        happyNumbersNum = happyNumbersNum + num;
-                    }
+                    return num;
                 }),
-                new Task(() => {
+                new Task<int>(() => {
                     var num = happyNumberService.CheckDiapazon(80000001, 90000000, charNum);
-                    lock (happyNumbersNum2)
-                    {
-                        happyNumbersNum = happyNumbersNum + num;
-                    }
+                    return num;
                 }),
-                new Task(() => {
+                new Task<int>(() => {
                     var num = happyNumberService.CheckDiapazon(90000001, 100000000, charNum);
-                    lock (happyNumbersNum2)
-                    {
-                        happyNumbersNum = happyNumbersNum + num;
-                    }
+                    return num;
                 })
             };
 
-            foreach (var t in tasks)
-                t.Start();
+            foreach (var task in tasks)
+                task.Start();
 
             Task.WaitAll(tasks);
+            var happyNumbersNum = 0;
+
+            foreach (var task in tasks)
+                happyNumbersNum = happyNumbersNum + task.Result;
 
             Console.WriteLine("Total: " + happyNumbersNum.ToString());
         }

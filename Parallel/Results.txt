@@ -7,3 +7,7 @@ UsualFunc2()
 ParallelFunc()
 	Time: 18805,159 ms
 	Time: 23721,9029 ms
+	
+ParallelFunc()	after modification: returned value of task instead lock
+	Time: 19917,7324 ms
+	Time: 16585,6613 ms
