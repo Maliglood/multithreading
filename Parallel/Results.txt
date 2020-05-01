@@ -4,10 +4,17 @@ UsualFunc()
 UsualFunc2()
 	Time: 26514,9519 ms
 	Time: 26106,934 ms
-ParallelFunc()
+ParallelFunc() [Task class]
 	Time: 18805,159 ms
 	Time: 23721,9029 ms
 	
-ParallelFunc()	after modification: returned value of task instead lock
+ParallelFunc() [Task class]	after modification: returned value of task instead lock
 	Time: 19917,7324 ms
 	Time: 16585,6613 ms
+	
+ParallelFunc() [Parallel class]
+	Time: 22126,0041 ms
+	
+ParallelFunc2() [Parallel.for]	
+	Time: 22948,0147 ms
+	Time: 21250,9985 ms

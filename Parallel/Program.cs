@@ -2,6 +2,8 @@
 using System.Threading;
 using System.Threading.Tasks;
 
+using HappyNumber;
+
 namespace Parallel
 {
     class Program

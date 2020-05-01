@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Threading;
 
-namespace Parallel
+namespace HappyNumber
 {
     public class HappyNumberService
     {
@@ -30,6 +29,18 @@ namespace Parallel
             }
 
             return happyNumbersNum;
+        }
+
+        public bool CheckNumber(int number, int charNum)
+        {
+            var isHappy = Calculate(number, charNum);
+            if (isHappy)
+            {
+                Console.WriteLine("Happy number: " + number.ToString());
+                return true;
+            }
+
+            return false;
         }
     }
 }
