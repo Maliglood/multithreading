@@ -52,7 +52,7 @@ namespace HappyNumber
                     var isHappy = Calculate(i, charNum);
                     if (i == goal)
                     {
-                        //cancelTokenSource.Cancel();
+                        cancelTokenSource.Cancel();
                         return i;
                     }
                 } else

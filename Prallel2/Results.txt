@@ -1,0 +1,38 @@
+I. Parallel calculations
+	1) TasksFunc()
+		Time: 32131,9555 ms
+		Time: 27267,0606 ms
+
+	2) ParallelFuncInvoke()
+		Time: 27891,998 ms
+
+	3) ParallelFuncFor()
+		Time: 23575,9974 ms
+		Time: 28324,0004 ms
+		Time: 30502,0491 ms
+		
+II. Parallel finding
+	1) TasksFindFunc()
+		Time: 4579,9992 ms
+		Time: 3226,0002 ms - Found number: 18688225
+		Time: 4093,0008 ms - Found number: 77181923
+		Time: 3804,9982 ms - Found number: 61291002
+		Time: 3054,0120 ms - Found number:  8897217
+		Time: 8718,0023 ms - Found number: 99999999
+		Time: 7602,9991 ms - Found number: 99999999
+		Time:  965,9992 ms - Found number: 23058353
+		Time:  204,9984 ms - Found number: 10022685
+		Time:  538,0032 ms - Found number:  1344518
+		Time: 6165,0041 ms - Found number: 89509905
+		
+	2) ParallelFindFunc()
+		Time: 7354,9994 ms - Found number: 76140441
+		Time: 4720,0008 ms - Found number: 31933144
+		Time: 1313,0002 ms - Found number: 4831172
+		Time:10222,0143 ms - Found number: 99999999
+		Time: 9774,9977 ms - Found number: 99999999
+		
+	3) ParallelFindFuncPrallelOptions()
+		Time: 2580,0034 ms - Found number: 30689622
+		Time: 6772,0003 ms - Found number: 67728323
+		Time: 2276,9989 ms - Found number: 55030681
